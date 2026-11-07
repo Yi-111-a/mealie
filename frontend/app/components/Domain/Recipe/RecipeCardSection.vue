@@ -132,6 +132,7 @@
               :image="recipe.image!"
               :tags="recipe.tags!"
               :recipe-id="recipe.id!"
+              @item-selected="(...args) => emit('item-selected', ...args)"
             />
           </v-col>
         </v-row>
@@ -156,6 +157,7 @@
               :image="recipe.image!"
               :tags="recipe.tags!"
               :recipe-id="recipe.id!"
+              @item-selected="(...args) => emit('item-selected', ...args)"
             />
           </v-col>
         </v-row>
@@ -208,6 +210,7 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<{
   replaceRecipes: [recipes: Recipe[]];
   appendRecipes: [recipes: Recipe[]];
+  itemSelected: (payload: { itemId: string; tag: string }) => void;
 }>();
 
 const display = useDisplay();
